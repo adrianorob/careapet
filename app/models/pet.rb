@@ -9,4 +9,6 @@ class Pet < ApplicationRecord
   validates :vaccine, inclusion: { in: ['em dia', 'incompleto']}
   validates :castrated, inclusion: { in: [ true, false ] }
 
+  mount_uploader :photo, PhotoUploader
+
 end
