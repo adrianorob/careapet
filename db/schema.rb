@@ -10,10 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423105335) do
+ActiveRecord::Schema.define(version: 20180424100505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name"
+    t.string "breed"
+    t.string "age"
+    t.string "weight"
+    t.text "description"
+    t.string "vaccine"
+    t.string "photo"
+    t.string "comment"
+    t.boolean "castrated"
+    t.string "sex"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "description"
+    t.string "author"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "photo"
+    t.decimal "total_value"
+    t.bigint "user_id"
+    t.bigint "pet_id"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_services_on_pet_id"
+    t.index ["task_id"], name: "index_services_on_task_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.decimal "bath_value"
+    t.decimal "walk_value"
+    t.decimal "play_value"
+    t.decimal "look_after_value"
+    t.decimal "vet_value"
+    t.decimal "training_value"
+    t.decimal "clean_house_value"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +87,9 @@ ActiveRecord::Schema.define(version: 20180423105335) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pets", "users"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "services", "pets"
+  add_foreign_key "services", "tasks"
+  add_foreign_key "services", "users"
 end
