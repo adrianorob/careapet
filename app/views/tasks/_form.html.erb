@@ -1,0 +1,19 @@
+<div class="container">
+  <div>
+    <%= simple_form_for [@user, @task] do |f| %>
+      <%= f.input :bath_value %>
+      <%= f.input :walk_value %>
+      <%= f.input :play_value %>
+      <%= f.input :look_after_value %>
+      <%= f.input :vet_value %>
+      <%= f.input :training_value %>
+      <%= f.input :clean_house_value %>
+      <%= f.input :comment %>
+      <p></p>
+      <%= f.submit %>
+    <% end %>
+   </div>
+</div>
+
+
+

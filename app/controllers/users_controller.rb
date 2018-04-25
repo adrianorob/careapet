@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @task = Task.new
-    @tasks = @user.tasks
+    @task = @user.task
     @review = Review.new
     @reviews = @user.reviews
     @pet = Pet.new

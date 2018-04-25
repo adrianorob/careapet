@@ -4,14 +4,35 @@
 <% if current_user == @user %>
   <%= link_to "Edit Usuário", edit_user_registration_path(current_user) %>
   <%= link_to "Adicionar Pet", new_user_pet_path(current_user) %>
+    <% if current_user == @user && current_user.caregiver %>
+    <%= link_to "Adicionar Tasks", new_user_task_path(current_user) %>
+  <% end %>
 <% end %>
-
 
   <div
     id="map-id"
     style="width: 420px; height: 270px;"
     data-marker="<%= @marker.to_json %>">
   </div>
+
+
+<% if @task %>
+    <p>Dar banho: <%= @task.bath_value %></p>
+    <p>Caminhar R$: <%= @task.walk_value %></p>
+    <p>Brincar R$: <%= @task.play_value %></p>
+    <p>Companhia R$: <%= @task.look_after_value %></p>
+    <p>Acompanhar ao Veterinário R$: <%= @task.vet_value %></p>
+    <p>Adestramento R$: <%= @task.training_value %></p>
+    <p>Limpeza da Casa R$: <%= @task.clean_house_value %></p>
+    <p>Obs.: <%= @task.comment %></p>
+    <% if current_user == @user %>
+      <p><%= link_to "Editar Task", edit_task_path(@task) %></p>
+      <p><%= link_to "Apagar Task", task_path(@task),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %></p>
+    <% end %>
+<% end %>
+
 
 
 <p><% @pets.each do |pet| %></p>

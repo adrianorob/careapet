@@ -51,7 +51,7 @@ class TasksController < ApplicationController
       render :show
     else
       @task.destroy
-      redirect_to current_user
+      redirect_to user_path(@user)
     end
   end
 
