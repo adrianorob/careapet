@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: [:index]
+
   def index
-    @users = User.all
+    @users = User.where.not(latitude: nil, longitude: nil)
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude#,
+      }
+    end
   end
 
   def show
@@ -14,6 +22,13 @@ class UsersController < ApplicationController
     @pets = @user.pets
     @service = Service.new
     @services = @user.services
+
+
+    @marker =
+      [{
+        lat: @user.latitude,
+        lng: @user.longitude
+      }]
   end
 
 end

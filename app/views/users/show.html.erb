@@ -1,9 +1,16 @@
 <div class="container">
   <p><%= @user.first_name %></p>
 
-<% if current_user %>
+<% if current_user == @user %>
   <%= link_to "Edit", edit_user_registration_path(current_user) %>
 <% end %>
+
+
+  <div
+    id="map-id"
+    style="width: 420px; height: 270px;"
+    data-marker="<%= @marker.to_json %>">
+  </div>
 
 
 </div>
