@@ -1,2 +1,19 @@
-<h1>Services#edit</h1>
-<p>Find me in app/views/services/edit.html.erb</p>
+<div class="container">
+
+  <div class="dates-rent col-xs-12 col-md-4">
+    <h1>Edit Service</h1>
+    <div>
+      <%= simple_form_for [@user, @service] do |f| %>
+      <p><%= f.association :pet %></p>
+      <p><%= f.association :task %></p>
+      <p><%= f.input :photo %></p>
+      <p><%= f.input :photo_cache, as: :hidden %></p>
+      <p><%= f.input :start_date %></p>
+      <p><%= f.input :end_date %></p>
+      <p></p>
+      <p><%= f.submit "Edit" %></p>
+      <% end %>
+    </div>
+  </div>
+
+</div>

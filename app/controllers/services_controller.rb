@@ -8,15 +8,10 @@ class ServicesController < ApplicationController
   end
 
   def show
-    @service = @service.user
   end
 
   def new
-    if @service.user == current_user
-      redirect_to current_user
-    else
-      @service = Service.new
-    end
+    @service = Service.new
   end
 
   def create

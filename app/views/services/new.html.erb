@@ -1,2 +1,18 @@
-<h1>Services#new</h1>
-<p>Find me in app/views/services/new.html.erb</p>
+<div class="container">
+
+  <div class="dates-rent col-xs-12 col-md-4">
+    <h1>New Service</h1>
+    <div>
+      <%= simple_form_for [@user, @service] do |f| %>
+      <p><%= f.input :pet_id, collection: [current_user.pets] %></p>
+      <p><%= f.input :task_id, as: :check_boxes, collection: [@user.task] %></p>
+      <p><%= f.input :start_date %></p>
+      <p><%= f.input :end_date %></p>
+      <p></p>
+      <p><%= f.submit "New" %></p>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
