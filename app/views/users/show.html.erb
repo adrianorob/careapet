@@ -29,7 +29,10 @@
 
 
     <% if current_user == @user %>
-      <p><%= link_to "Edit Pet", edit_pet_path(pet) %></p>
+      <p><%= link_to "Editar Pet", edit_pet_path(pet) %></p>
+      <p><%= link_to "Apagar Pet", pet_path(pet),
+        method: :delete,
+        data: { confirm: "Ówn, tem certeza?" } %></p>
     <% end %>
   <% end %>
 
