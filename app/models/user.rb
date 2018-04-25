@@ -8,8 +8,6 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :pets, dependent: :destroy
   has_many :services
-  has_many :pets, through: :services
-  has_many :tasks, through: :services
 
   validates :first_name, presence: true
   validates :last_name, presence: true

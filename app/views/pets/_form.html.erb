@@ -1,0 +1,20 @@
+<div class="container">
+  <div>
+    <%= simple_form_for [@user, @pet] do |f| %>
+      <%= f.input :name, required: true, autofocus: true %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= f.input :breed %>
+      <%= f.input :age, collection: ['até 1 ano', '1-2 anos','2-5 anos', '5-10 anos', '10+ anos'] %>
+      <%= f.input :weight, collection: ['até 5 kg', '5-10 kg','10-20 kg', '20-40 kg'] %>
+      <%= f.input :description %>
+      <%= f.input :vaccine, collection: ['em dia', 'incompleto'] %>
+      <%= f.input :castrated, as: :boolean, include_hidden: false %>
+      <%= f.input :sex, collection: ['macho', 'fêmea'] %>
+      <%= f.input :comment %>
+      <p></p>
+      <%= f.submit %>
+    <% end %>
+   </div>
+</div>
+

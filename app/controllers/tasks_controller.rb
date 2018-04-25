@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
 
+  before_action :set_user, only: [:new, :create]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,7 +8,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    current_user = @task.user
+    @task = @task.user
   end
 
   def new
@@ -18,7 +19,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = current_user
     if @task.save
-      redirect_to current_user_path
+      redirect_to current_user
     else
       render :new
     end
@@ -37,7 +38,7 @@ class TasksController < ApplicationController
     else
       @task.update(task_params)
       if @task.save
-        redirect_to current_user_path
+        redirect_to current_user
       else
         render :new
       end
@@ -50,11 +51,15 @@ class TasksController < ApplicationController
       render :show
     else
       @task.destroy
-      redirect_to current_user_path
+      redirect_to current_user
     end
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def set_task
     @task = Task.find(params[:id])

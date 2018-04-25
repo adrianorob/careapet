@@ -2,7 +2,8 @@
   <p><%= @user.first_name %></p>
 
 <% if current_user == @user %>
-  <%= link_to "Edit", edit_user_registration_path(current_user) %>
+  <%= link_to "Edit Usuário", edit_user_registration_path(current_user) %>
+  <%= link_to "Adicionar Pet", new_user_pet_path(current_user) %>
 <% end %>
 
 
@@ -13,5 +14,32 @@
   </div>
 
 
+<p><% @pets.each do |pet| %></p>
+    <p>Nome: <%= pet.name %></p>
+    <p>Raça: <%= pet.breed %></p>
+    <p>Descrição: <%= pet.description %></p>
+    <p>Idade: <%= pet.age %></p>
+    <p>Peso: <%= pet.weight %></p>
+    <p>Sexo: <%= pet.sex %></p>
+    <p>Vacinação: <%= pet.vaccine %></p>
+    <p>Castração: <%= pet.castrated %></p>
+    <p>Obs.: <%= pet.comment %></p>
+    <p></p>
+    <p><%= cl_image_tag pet.photo %></p>
+
+
+    <% if current_user == @user %>
+      <p><%= link_to "Edit Pet", edit_pet_path(pet) %></p>
+    <% end %>
+  <% end %>
+
+
 </div>
+
+
+
+
+
+
+
 
