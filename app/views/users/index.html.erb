@@ -20,5 +20,14 @@
 
   <p><%= link_to 'home', root_path %></p>
 
+   <h3>Todos os cuidadores</h3>
+
+  <% @caregivers.each do |caregiver| %>
+    <p><%= caregiver.first_name %></p>
+    <p><%= caregiver.last_name %></p>
+    <p><%= caregiver.email %></p>
+    <p><%= caregiver.address %></p>
+    <p><%= link_to "ver", user_path(caregiver) %> </p>
+  <% end %>
 
 </div>

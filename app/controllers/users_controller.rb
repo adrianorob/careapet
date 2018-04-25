@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @users = User.where.not(latitude: nil, longitude: nil)
@@ -10,6 +10,8 @@ class UsersController < ApplicationController
         lng: user.longitude#,
       }
     end
+
+    @caregivers = User.where(caregiver: true)
   end
 
   def show
@@ -22,7 +24,6 @@ class UsersController < ApplicationController
     @pets = @user.pets
     @service = Service.new
     @services = @user.services
-
 
     @marker =
       [{
