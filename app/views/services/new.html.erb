@@ -4,15 +4,17 @@
     <h1>New Service</h1>
     <div>
       <%= simple_form_for [@user, @service] do |f| %>
-      <p><%= f.input :pet_id, as: :check_boxes, collection: [@pets] %></p>
-      <p><%= f.input :task_id, as: :check_boxes, collection: [@task] %></p>
-      <p><%= f.input :start_date %></p>
-      <p><%= f.input :end_date %></p>
+      <p><%= f.association :pet, label: "Pet(s)", as: :check_boxes %></p>
+      <p><%= f.association :task, label: "Atividade(s)",as: :check_boxes %></p>
+      <p><%= f.input :start_date, label: "Data inicial", required: true, start_year: Date.today.year, end_year: Date.today.year  %></p>
+      <p><%= f.input :end_date, label: "Data final", required: true, start_year: Date.today.year, end_year: Date.today.year %></p>
       <p></p>
-      <p><%= f.submit "New" %></p>
+      <p><%= f.submit "Orçar" %></p>
       <% end %>
     </div>
   </div>
 
 </div>
+
+
 

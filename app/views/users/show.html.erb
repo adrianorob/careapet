@@ -2,10 +2,10 @@
   <p><%= @user.first_name %></p>
 
 <% if current_user == @user %>
-  <%= link_to "Edit Usuário", edit_user_registration_path(current_user) %>
-  <%= link_to "Adicionar Pet", new_user_pet_path(current_user) %>
+  <%= link_to "Editar perfil", edit_user_registration_path(current_user) %>
+  <%= link_to "Adicionar pet", new_user_pet_path(current_user) %>
     <% if current_user == @user && current_user.caregiver %>
-    <%= link_to "Adicionar Tasks", new_user_task_path(current_user) %>
+    <%= link_to "Adicionar atividades e preços", new_user_task_path(current_user) %>
   <% end %>
 <% end %>
 
@@ -26,14 +26,14 @@
     <p>Limpeza da Casa R$: <%= @task.clean_house_value %></p>
     <p>Obs.: <%= @task.comment %></p>
     <% if current_user == @user %>
-      <p><%= link_to "Editar Task", edit_task_path(@task) %></p>
-      <p><%= link_to "Apagar Task", task_path(@task),
+      <p><%= link_to "Editar atividades", edit_task_path(@task) %></p>
+      <p><%= link_to "Apagar atividades", task_path(@task),
         method: :delete,
         data: { confirm: "Are you sure?" } %></p>
     <% end %>
 
     <% if current_user != @user %>
-      <p><%= link_to "Contratar", new_user_service_path(@user) %></p>
+      <p><%= link_to "Selecionar", new_user_service_path(@user) %></p>
     <% end %>
 <% end %>
 
