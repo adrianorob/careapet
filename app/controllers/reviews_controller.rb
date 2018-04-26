@@ -10,9 +10,15 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = @user
     if @review.save
-      redirect_to user_path(@user)
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'users/show' }
+        format.js  # <-- idem
+      end
     end
   end
 
