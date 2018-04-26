@@ -1,6 +1,6 @@
-<%= simple_form_for([ user, review ], remote: true) do |form| %>
-  <%= form.input :description %>
-  <%= form.input :author %>
-  <%= f.input :rating, collection: [0, 1, 2, 3, 4, 5] %>
-  <%= form.button :submit %>
+<%= simple_form_for([ user, review ], remote: true) do |f| %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :author %>
+  <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
+  <%= f.button :submit %>
 <% end %>

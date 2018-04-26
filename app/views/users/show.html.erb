@@ -62,6 +62,20 @@
   <% end %>
 
 
+
+<div id="reviews">
+  <% if @user.reviews.blank? %>
+    Seja o primeiro a comentar sobre <%= @user.first_name %>
+  <% else %>
+    <% @user.reviews.each do |review| %>
+      <%= render 'reviews/show', review: review %>
+    <% end %>
+  <% end %>
+</div>
+
+  <%= render 'reviews/form', user: @user, review: @review %>
+
+
 </div>
 
 
