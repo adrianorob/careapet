@@ -1,15 +1,14 @@
 <div class="container">
 
-  <h1>Todos os usuários</h1>
+  <h1>Cuidadores próximos a você</h1>
 
-  <% @users.each do |user| %>
-    <p><%= user.first_name %></p>
-    <p><%= user.last_name %></p>
-    <p><%= user.email %></p>
-    <p><%= user.address %></p>
-    <p><%= link_to "ver", user_path(user) %> </p>
+  <% @caregivers.each do |caregiver| %>
+    <p><%= caregiver.first_name %></p>
+    <p><%= caregiver.last_name %></p>
+    <p><%= caregiver.email %></p>
+    <p><%= caregiver.address %></p>
+    <p><%= link_to "ver", user_path(caregiver) %> </p>
   <% end %>
-
 
   <div
   id="map"
@@ -20,14 +19,7 @@
 
   <p><%= link_to 'home', root_path %></p>
 
-   <h3>Todos os cuidadores</h3>
 
-  <% @caregivers.each do |caregiver| %>
-    <p><%= caregiver.first_name %></p>
-    <p><%= caregiver.last_name %></p>
-    <p><%= caregiver.email %></p>
-    <p><%= caregiver.address %></p>
-    <p><%= link_to "ver", user_path(caregiver) %> </p>
-  <% end %>
+
 
 </div>
