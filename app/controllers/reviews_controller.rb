@@ -9,15 +9,20 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user = @user
-    if @review.save
-      respond_to do |format|
-        format.html { redirect_to user_path(@user) }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
-      end
+    if @review.user == current_user
+      flash[:alert] = "Não autorizado!"
+      redirect_to current_user
     else
-      respond_to do |format|
-        format.html { render 'users/show' }
-        format.js  # <-- idem
+      if @review.save
+        respond_to do |format|
+          format.html { redirect_to user_path(@user) }
+          format.js  # <-- will render `app/views/reviews/create.js.erb`
+        end
+      else
+        respond_to do |format|
+          format.html { render 'users/show' }
+          format.js  # <-- idem
+        end
       end
     end
   end

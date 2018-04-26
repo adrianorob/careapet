@@ -64,7 +64,7 @@
 
 
 <div id="reviews">
-  <% if @user.reviews.blank? %>
+  <% if @user.reviews.blank? && current_user != @user %>
     Seja o primeiro a comentar sobre <%= @user.first_name %>
   <% else %>
     <% @user.reviews.each do |review| %>
@@ -73,8 +73,9 @@
   <% end %>
 </div>
 
-  <%= render 'reviews/form', user: @user, review: @review %>
-
+  <% if current_user != @user %>
+    <%= render 'reviews/form', user: @user, review: @review %>
+  <% end %>
 
 </div>
 
