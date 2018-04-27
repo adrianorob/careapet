@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427170746) do
+ActiveRecord::Schema.define(version: 20180427200006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(version: 20180427170746) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "buyer_id"
+    t.bigint "user_tasks_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_services_on_buyer_id"
+    t.index ["user_tasks_id"], name: "index_services_on_user_tasks_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -86,12 +97,15 @@ ActiveRecord::Schema.define(version: 20180427170746) do
     t.float "longitude"
     t.string "phone_number"
     t.boolean "caregiver", default: false
+    t.bigint "service_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["service_id"], name: "index_users_on_service_id"
   end
 
   add_foreign_key "pets", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "user_tasks", "tasks"
   add_foreign_key "user_tasks", "users"
+  add_foreign_key "users", "services"
 end
