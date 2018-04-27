@@ -17,14 +17,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @task = Task.new
-    @task = @user.task
     @review = Review.new
     @reviews = @user.reviews
     @pet = Pet.new
     @pets = @user.pets
-    @service = Service.new
-    @services = @user.services
+
 
     @marker =
       [{

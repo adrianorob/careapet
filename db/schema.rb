@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425183902) do
+ActiveRecord::Schema.define(version: 20180425174422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,36 +40,6 @@ ActiveRecord::Schema.define(version: 20180425183902) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
-  create_table "services", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.string "photo"
-    t.decimal "total_value"
-    t.bigint "user_id"
-    t.bigint "pet_id"
-    t.bigint "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["pet_id"], name: "index_services_on_pet_id"
-    t.index ["task_id"], name: "index_services_on_task_id"
-    t.index ["user_id"], name: "index_services_on_user_id"
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.decimal "bath_value"
-    t.decimal "walk_value"
-    t.decimal "play_value"
-    t.decimal "look_after_value"
-    t.decimal "vet_value"
-    t.decimal "training_value"
-    t.decimal "clean_house_value"
-    t.text "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,8 +76,4 @@ ActiveRecord::Schema.define(version: 20180425183902) do
 
   add_foreign_key "pets", "users"
   add_foreign_key "reviews", "users"
-  add_foreign_key "services", "pets"
-  add_foreign_key "services", "tasks"
-  add_foreign_key "services", "users"
-  add_foreign_key "tasks", "users"
 end
