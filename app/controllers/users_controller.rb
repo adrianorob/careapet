@@ -21,6 +21,8 @@ class UsersController < ApplicationController
     @reviews = @user.reviews
     @pet = Pet.new
     @pets = @user.pets
+    @user_task = UserTask.new
+    @user_tasks = @user.user_tasks
 
 
     @marker =

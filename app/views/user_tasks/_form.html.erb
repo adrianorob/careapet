@@ -1,0 +1,9 @@
+<div class="container">
+  <div>
+    <%= simple_form_for [@user_task] do |f| %>
+      <%= f.association :task %>
+      <%= f.input :price %>
+      <%= f.submit %>
+    <% end %>
+   </div>
+</div>

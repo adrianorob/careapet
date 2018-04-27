@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :pets, only: [:index, :show, :edit, :update, :destroy]
   resources :reviews, only: [:index, :show, :edit, :update, :destroy]
+  resources :user_tasks
 
 end
 
