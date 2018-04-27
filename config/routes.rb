@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root to: 'pages#home'
   devise_for :users
 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   resources :pets, only: [:index, :show, :edit, :update, :destroy]
   resources :reviews, only: [:index, :show, :edit, :update, :destroy]
   resources :user_tasks
+  resources :services
 
 end
 
