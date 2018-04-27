@@ -1,5 +1,11 @@
 <div class="container">
+
   <p><%= @user.first_name %></p>
+
+  <% if @user.caregiver %>
+    <p>Este é um Cuidador</p>
+  <% end %>
+
 
 <% if current_user == @user %>
   <%= link_to "Editar perfil", edit_user_registration_path(current_user) %>
