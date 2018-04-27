@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
 
+  before_action :set_user, only: [:new, :create]
   before_action :set_service, only: [:show]
 
   def index
@@ -16,14 +17,20 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
     @service.buyer = current_user
+    @user_tasks = @service.user_tasks
       if @service.save!
-          redirect_to root_path
+        flash[:alert] = "Serviço solicitado!"
+        redirect_to root_path
       else
         render :new
       end
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def set_service
     @service = Service.find(params[:id])

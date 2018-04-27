@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <%= simple_form_for [@service] do |f| %>
+    <%= simple_form_for [@user, @service] do |f| %>
       <%= f.input :start_date %>
       <%= f.input :end_date %>
       <%= f.association :user_tasks, label_method: :price, as: :check_boxes %>

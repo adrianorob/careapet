@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     resources :pets, only: [:new, :create]
     resources :reviews, only: [:new, :create]
+    resources :services, only: [:new, :create]
   end
 
   resources :pets, only: [:index, :show, :edit, :update, :destroy]
   resources :reviews, only: [:index, :show, :edit, :update, :destroy]
   resources :user_tasks
-  resources :services
+  resources :services, only: [:index, :show, :edit, :update, :destroy]
 
 end
 
