@@ -1,2 +1,20 @@
-<h1>Services#show</h1>
-<p>Find me in app/views/services/show.html.erb</p>
+
+
+<div class="container">
+  <h1>Serviço contratado</h1>
+
+  <p>comprador: <%= @service.buyer.first_name %></p>
+  <p>cuidador: <%= @service.user.first_name %></p>
+  <p>De: <%= @service.start_date %> até: <%= @service.end_date %></p>
+
+  <% @service.user_tasks.each do |usertask| %>
+  <p><%= usertask.task.name %> R$:<%= usertask.price %> </p>
+  <% end %>
+
+  <%= link_to "home", root_path %>
+
+</div>
+
+
+
+

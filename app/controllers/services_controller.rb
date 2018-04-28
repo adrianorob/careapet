@@ -17,9 +17,10 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
     @service.buyer = current_user
+    @service.user = @user
       if @service.save!
         flash[:alert] = "Serviço solicitado!"
-        redirect_to root_path
+        redirect_to service_path(@service)
       else
         render :new
       end
@@ -36,7 +37,7 @@ class ServicesController < ApplicationController
   end
 
   def service_params
-    params.require(:service).permit(:start_date, :end_date, :buyer_id, :user_tasks_id)
+    params.require(:service).permit(:start_date, :end_date, :buyer_id, :user_id)
   end
 
 end
