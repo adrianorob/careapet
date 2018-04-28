@@ -17,7 +17,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
     @service.buyer = current_user
-    @user_tasks = @service.user_tasks
+    @service.user_tasks.user
       if @service.save!
         flash[:alert] = "Serviço solicitado!"
         redirect_to root_path
