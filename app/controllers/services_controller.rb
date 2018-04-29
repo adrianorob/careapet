@@ -1,7 +1,7 @@
 class ServicesController < ApplicationController
 
   before_action :set_user, only: [:new, :create]
-  before_action :set_service, only: [:show]
+  before_action :set_service, only: [:show, :confirmed]
 
   def index
     @services = Service.all
