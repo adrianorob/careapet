@@ -6,12 +6,15 @@
   <p>comprador: <%= @service.buyer.first_name %></p>
   <p>cuidador: <%= @service.caregiver.first_name %></p>
   <p>De: <%= @service.start_date %> até: <%= @service.end_date %></p>
+  <p>status <%= @service.confirmed %> </p>
 
   <% @service.user_tasks.each do |usertask| %>
   <p><%= usertask.task.name %> </p>
   <% end %>
 
-  <%= link_to "home", root_path %>
+  <p> <%= link_to "Minha página", current_user %> </p>
+  <p> <%= link_to "home", root_path %> </p>
+
 
 </div>
 

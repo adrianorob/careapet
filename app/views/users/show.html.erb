@@ -44,12 +44,17 @@
     <p> Serviço número: <%= service.id %> </p>
     <p> cuidador: <%= service.caregiver.first_name %> </p>
     <p> Data: <%= service.created_at.strftime("%d/%m/%y") %></p>
+    <p> status: <%= service.confirmed %></p>
   <% end %>
 
   <% @caregiver_services.each do |service| %>
     <p> Serviço número: <%= service.id %> </p>
     <p> comprador: <%= service.buyer.first_name %> </p>
     <p> Data: <%= service.created_at.strftime("%d/%m/%y") %></p>
+    <p> status: <%= service.confirmed  %></p>
+    <% if service.confirmed == false %>
+     <p> <%= link_to "Confirmar serviço", toggle_service_path(service), method: :put %> </p>
+     <% end %>
   <% end %>
 
 <% end %>

@@ -1,13 +1,19 @@
 class ServicesController < ApplicationController
 
   before_action :set_user, only: [:new, :create]
-  before_action :set_service, only: [:show, :confirmed]
+  before_action :set_service, only: [:show, :toggle]
 
   def index
     @services = Service.all
   end
 
   def show
+  end
+
+  def toggle
+    @service.toggle(:confirmed)
+    @service.save
+    redirect_to service_path(@service)
   end
 
   def new
@@ -37,7 +43,7 @@ class ServicesController < ApplicationController
   end
 
   def service_params
-    params.require(:service).permit(:start_date, :end_date, :buyer_id, :caregiver_id)
+    params.require(:service).permit(:start_date, :end_date, :buyer_id, :caregiver_id, :confirmed)
   end
 
 end

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   resources :pets, only: [:index, :show, :edit, :update, :destroy]
   resources :reviews, only: [:index, :show, :edit, :update, :destroy]
   resources :user_tasks
-  resources :services, only: [:index, :show, :edit, :update, :destroy]
+  resources :services, only: [:index, :show, :edit, :update, :destroy] do
+    member do
+        put :toggle
+    end
+  end
 
 end
 
