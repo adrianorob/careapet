@@ -46,9 +46,11 @@ ActiveRecord::Schema.define(version: 20180428213430) do
     t.date "start_date"
     t.date "end_date"
     t.bigint "buyer_id"
+    t.bigint "caregiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_services_on_buyer_id"
+    t.index ["caregiver_id"], name: "index_services_on_caregiver_id"
   end
 
   create_table "tasks", force: :cascade do |t|

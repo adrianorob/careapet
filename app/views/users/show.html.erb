@@ -39,6 +39,21 @@
   <% end %>
 
 
+<% @buyer_services.each do |service| %>
+  <p> <%= service.buyer.first_name %> </p>
+<% end %>
+
+
+<% @caregiver_services.each do |service| %>
+  <p> <%= service.caregiver.first_name %> </p>
+<% end %>
+
+
+
+
+
+<hr>
+
 <p><% @pets.each do |pet| %></p>
     <p>Nome: <%= pet.name %></p>
     <p>Raça: <%= pet.breed %></p>
@@ -60,6 +75,8 @@
         data: { confirm: "Ówn, tem certeza?" } %></p>
     <% end %>
   <% end %>
+
+
 
 
 

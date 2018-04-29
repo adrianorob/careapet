@@ -23,7 +23,9 @@ class UsersController < ApplicationController
     @pets = @user.pets
     @user_task = UserTask.new
     @user_tasks = @user.user_tasks
-
+    @service = Service.new
+    @buyer_services = @user.buyer_services
+    @caregiver_services = @user.caregiver_services
 
     @marker =
       [{

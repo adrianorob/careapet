@@ -4,11 +4,11 @@
   <h1>Serviço contratado</h1>
 
   <p>comprador: <%= @service.buyer.first_name %></p>
-  <p>cuidador: <%= @service.user.first_name %></p>
+  <p>cuidador: <%= @service.caregiver.first_name %></p>
   <p>De: <%= @service.start_date %> até: <%= @service.end_date %></p>
 
   <% @service.user_tasks.each do |usertask| %>
-  <p><%= usertask.task.name %> R$:<%= usertask.price %> </p>
+  <p><%= usertask.task.name %> </p>
   <% end %>
 
   <%= link_to "home", root_path %>
