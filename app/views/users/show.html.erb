@@ -39,19 +39,21 @@
   <% end %>
 
 
+<% if current_user == @user %>
   <% @buyer_services.each do |service| %>
     <p> Serviço número: <%= service.id %> </p>
     <p> cuidador: <%= service.caregiver.first_name %> </p>
     <p> Data: <%= service.created_at.strftime("%d/%m/%y") %></p>
   <% end %>
 
-
-
   <% @caregiver_services.each do |service| %>
     <p> Serviço número: <%= service.id %> </p>
     <p> comprador: <%= service.buyer.first_name %> </p>
     <p> Data: <%= service.created_at.strftime("%d/%m/%y") %></p>
   <% end %>
+
+<% end %>
+
 
 <hr>
 
