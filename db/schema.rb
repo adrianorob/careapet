@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180429173503) do
+ActiveRecord::Schema.define(version: 20180430104426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20180429173503) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "confirmed", default: false
+    t.boolean "pay_authorized", default: false
     t.index ["buyer_id"], name: "index_services_on_buyer_id"
     t.index ["caregiver_id"], name: "index_services_on_caregiver_id"
   end

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :services, only: [:index, :show, :edit, :update, :destroy] do
     member do
         put :toggle
+        put :toggle_pay_authorized, as: 'authorized'
     end
   end
 

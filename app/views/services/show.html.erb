@@ -6,7 +6,8 @@
   <p>comprador: <%= @service.buyer.first_name %></p>
   <p>cuidador: <%= @service.caregiver.first_name %></p>
   <p>De: <%= @service.start_date %> até: <%= @service.end_date %></p>
-  <p>status <%= @service.confirmed %> </p>
+  <p>confirmado: <%= @service.confirmed %> </p>
+  <p>status do pagamento: <%= @service.pay_authorized %> </p>
 
   <% @service.user_tasks.each do |usertask| %>
   <p><%= usertask.task.name %> </p>

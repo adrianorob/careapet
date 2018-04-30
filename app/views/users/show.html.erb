@@ -44,17 +44,22 @@
     <p> Serviço número: <%= service.id %> </p>
     <p> cuidador: <%= service.caregiver.first_name %> </p>
     <p> Data: <%= service.created_at.strftime("%d/%m/%y") %></p>
-    <p> status: <%= service.confirmed %></p>
+    <p> confirmado: <%= service.confirmed %></p>
+    <p> status do pagamento: <%= service.pay_authorized %></p>
+    <% if service.confirmed == true && service.pay_authorized == false %>
+     <p> <%= link_to "Autorizar Pagamento", authorized_service_path(service), method: :put %> </p>
+     <% end %>
   <% end %>
 
   <% @caregiver_services.each do |service| %>
     <p> Serviço número: <%= service.id %> </p>
     <p> comprador: <%= service.buyer.first_name %> </p>
     <p> Data: <%= service.created_at.strftime("%d/%m/%y") %></p>
-    <p> status: <%= service.confirmed  %></p>
+    <p> confirmado: <%= service.confirmed  %></p>
     <% if service.confirmed == false %>
      <p> <%= link_to "Confirmar serviço", toggle_service_path(service), method: :put %> </p>
      <% end %>
+    <p> status do pagamento: <%= service.pay_authorized %></p>
   <% end %>
 
 <% end %>
