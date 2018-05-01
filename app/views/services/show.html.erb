@@ -1,7 +1,7 @@
 
 
 <div class="container">
-  <h1>Serviço contratado</h1>
+  <h1>Serviço</h1>
 
   <p>comprador: <%= @service.buyer.first_name %></p>
   <p>cuidador: <%= @service.caregiver.first_name %></p>
@@ -9,13 +9,9 @@
   <p>confirmado: <%= @service.confirmed %> </p>
   <p>status do pagamento: <%= @service.pay_authorized %> </p>
 
-  <% @service.user_tasks.each do |usertask| %>
-  <p><%= usertask.task.name %> </p>
-  <% end %>
 
   <p> <%= link_to "Minha página", current_user %> </p>
   <p> <%= link_to "home", root_path %> </p>
-
 
 </div>
 

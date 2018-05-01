@@ -3,7 +3,7 @@ class UserTasksController < ApplicationController
   before_action :set_user_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users_tasks = UserTask.all
+    @user_tasks = UserTask.all
   end
 
   def show
