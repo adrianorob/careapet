@@ -3,14 +3,20 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @users = User.all
-    @caregivers = User.where(caregiver: true).where.not(latitude: nil, longitude: nil)
+    if params[:address].present?
+      @caregivers = User.where(caregiver: true).where.not(latitude: nil, longitude: nil).near(params[:address], 5)
+    else
+      @users = User.all
+      @caregivers = User.where(caregiver: true).where.not(latitude: nil, longitude: nil)
+    end
+
     @markers = @caregivers.map do |user|
       {
         lat: user.latitude,
         lng: user.longitude#,
       }
     end
+
   end
 
   def show
