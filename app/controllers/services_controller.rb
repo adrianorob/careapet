@@ -13,12 +13,15 @@ class ServicesController < ApplicationController
   def toggle
     @service.toggle(:confirmed)
     @service.save
+    ServiceMailer.pay_service_buyer(@service).deliver_now
+    ServiceMailer.pay_service_caregiver(@service).deliver_now
     redirect_to service_path(@service)
   end
 
   def toggle_pay_authorized
     @service.toggle(:pay_authorized)
     @service.save
+    ServiceMailer.paid_service_caregiver(@service).deliver_now
     redirect_to service_path(@service)
   end
 
