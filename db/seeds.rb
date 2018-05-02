@@ -19,12 +19,12 @@ u1 = User.create(first_name: "caregiver1", last_name: "caregiver1", address: "Ru
 u2 = User.create(first_name: "caregiver2", last_name: "caregiver2", address: "Rua Domingos de Morais, 2450 - Vila Mariana", photo: "image/upload/v1525085814/ryhltgbcbgxyv0xvsi5d.png", email: "caregiver2@caregiver2.com", phone_number: "", caregiver: true, password: '123456', password_confirmation: '123456')
 
 puts "3 user_tasks caregiver 1"
-ust1 = UserTasks.create(task_id: 5, user_id: 1, price: "1000")
-ust2 = UserTasks.create(task_id: 6, user_id: 1, price: "50")
-ust3 = UserTasks.create(task_id: 2, user_id: 1, price: "100")
+ust1 = UserTask.create(task_id: 5, user_id: 1, price: "1000")
+ust2 = UserTask.create(task_id: 6, user_id: 1, price: "50")
+ust3 = UserTask.create(task_id: 2, user_id: 1, price: "100")
 
 puts "1 user_tasks caregiver 2"
-ust4 = UserTasks.create(task_id: 5, user_id: 2, price: "90")
+ust4 = UserTask.create(task_id: 5, user_id: 2, price: "90")
 
 puts "3 Usuários caregiver: false, todos compradores"
 u3 = User.create(first_name: "teste", last_name: "teste", address: "Rua Coronel Oscar Porto, 70 - Paraíso, São Paulo", photo: "image/upload/v1525085951/ovrl0xbgibzkxeegfysi.png", email: "teste@teste.com", phone_number: "9999-9999", caregiver: false, password: '123456', password_confirmation: '123456')
