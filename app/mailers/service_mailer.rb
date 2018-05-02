@@ -10,6 +10,7 @@ class ServiceMailer < ApplicationMailer
 
   def new_service_caregiver(service)
     @service = service
+    @service.caregiver
     mail(
           to: @service.caregiver.email,
           subject: "Olá #{@service.caregiver.first_name}, novo serviço solicitado!"
