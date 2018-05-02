@@ -3,6 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @caregivers = User.where(caregiver: true)
-    @owners = User.where(caregiver: false)
+    @buyers = User.where(caregiver: false)
   end
 end

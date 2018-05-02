@@ -1,17 +1,23 @@
 <div class="container">
   <p>Bem-vindos!</p>
 
-  <p><%= @owners.count %> usuários </p>
+  <p><%= @buyers.count %> usuários </p>
   <p><%= @caregivers.count %> cuidadores </p>
   <%= link_to 'Cuidadores', users_path %>
 
 </div>
 
+<div>
+<%= form_tag users_path, method: :get do %>
+  <%= label :address, "Buscar cuidadores perto: " %>
+  <%= text_field_tag :address, params[:address] %>
 
-<div class="container">
-  <p>como funciona</p>
-
+  <%= submit_tag "Buscar" %>
+<% end %>
 </div>
+
+
+
 
 
 
