@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     if params[:address].present?
       @caregivers = User.where(caregiver: true).where.not(latitude: nil, longitude: nil).near(params[:address], 5)
     else
+      @users = User.all
       @caregivers = User.where(caregiver: true).where.not(latitude: nil, longitude: nil)
     end
 

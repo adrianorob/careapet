@@ -3,18 +3,20 @@
 
   <p><%= @buyers.count %> usuários </p>
   <p><%= @caregivers.count %> cuidadores </p>
-  <%= link_to 'Cuidadores', users_path %>
 
+  <p>ver todos os <%= link_to 'cuidadores', users_path %></p>
+  <hr>
+  <p>Ou procure cuidadores próximos a você</p>
+
+  <div>
+    <%= form_tag users_path, method: :get do %>
+    <%= text_field_tag :address, params[:address], placeholder: 'Digite seu endereço' %>
+    <p><%= submit_tag "Buscar" %></p>
+  <% end %>
+  </div>
 </div>
 
-<div>
-<%= form_tag users_path, method: :get do %>
-  <%= label :address, "Buscar cuidadores perto: " %>
-  <%= text_field_tag :address, params[:address] %>
 
-  <%= submit_tag "Buscar" %>
-<% end %>
-</div>
 
 
 

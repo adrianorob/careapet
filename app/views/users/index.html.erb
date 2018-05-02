@@ -1,11 +1,9 @@
 <div class="container">
 
-  <h1>Cuidadores próximos a você</h1>
+  <h1>Cuidadores</h1>
 
   <% @caregivers.each do |caregiver| %>
-    <p><%= caregiver.first_name %></p>
-    <p><%= caregiver.last_name %></p>
-    <p><%= caregiver.email %></p>
+    <p><%= caregiver.first_name %> <%= caregiver.last_name %></p>
     <p><%= caregiver.address %></p>
     <p><%= link_to "ver", user_path(caregiver) %> </p>
   <% end %>
